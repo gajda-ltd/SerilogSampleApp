@@ -8,12 +8,13 @@ namespace Gajda.PoC.SerilogSampleApp.WebApi
     using Serilog;
     using Serilog.Sinks.Graylog;
 
-    public class Program
+    public static class Program
     {
         public static async Task Main(string[] args)
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
+                .AddEnvironmentVariables()
                 .Build();
 
             Log.Logger = new LoggerConfiguration()

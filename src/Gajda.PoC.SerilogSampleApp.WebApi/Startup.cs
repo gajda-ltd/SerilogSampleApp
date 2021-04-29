@@ -20,6 +20,8 @@ namespace Gajda.PoC.SerilogSampleApp.WebApi
             services.AddLogging(configure => configure.AddSerilog());
             services.AddHealthChecks();
 
+            services.AddOptions<SampleOptions>().Bind(this.Configuration.GetSection("Sample"));
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
