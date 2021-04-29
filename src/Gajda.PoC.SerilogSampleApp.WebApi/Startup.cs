@@ -6,6 +6,7 @@ namespace Gajda.PoC.SerilogSampleApp.WebApi
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
+    using Prometheus;
     using Serilog;
 
     public class Startup
@@ -35,6 +36,9 @@ namespace Gajda.PoC.SerilogSampleApp.WebApi
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMetricServer();
+            app.UseHttpMetrics();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
